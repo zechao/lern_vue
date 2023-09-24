@@ -1,5 +1,8 @@
 <template>
-	<h2>我是About的内容</h2>
+	<ul>
+		<li>Message id:</li>
+		<li>Message title:</li>
+	</ul>
 </template>
 
 <script>
