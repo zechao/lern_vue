@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get start with Vue.js</title>
+    <script src="/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  </head>
+
+  <body>
+    <div id="root">
+      <h1>{{msg}}</h1>
+      <hello></hello>
+      <hr />
+      <student></student>
+      <hr />
+      <school></school>
+      <hr />
+      <student></student>
+
+    </div>
+    <div id="root2"></div>
+    <script type="text/javascript">
+      Vue.config.productionTip = false;
+
+      const school = Vue.extend({
+        template: `
+        <div>
+            <h2>{{schoolName}}</h2>
+             <h2>{{address}}</h2>
+         </div>
+            `,
+        data() {
+          return {
+            schoolName: "UIB",
+            address: "Valldemossa",
+          };
+        },
+      });
+
+      const student = Vue.extend({
+        template: `
+          <div>
+            <h2>{{age}}</h2>
+            <h2>{{name}}</h2>
+            </div>
+          `,
+        data() {
+          return {
+            name: "Zechao",
+            age: 30,
+          };
+        },
+      });
+      const hello = Vue.extend({
+        template: `
+        <div>
+            <h2>hello</h2>
+            </div>
+        `,
+      });
+      Vue.component('hello',hello)
+      new Vue({
+        el: "#root",
+        data: {
+          msg: "Hello",
+        },
+        components: {
+          school: school,
+          student: student,
+        },
+      });
+    </script>
+  </body>
+</html>

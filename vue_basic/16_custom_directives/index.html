@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get start with Vue.js</title>
+    <script src="/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  </head>
+
+  <body>
+    <div id="root">
+      <h2>Current value <span v-text="n"></span></h2>
+       <h2>Amplified value <span v-big-number:100="n"></span></h2>
+      <h2>Amplified value <span v-big:100="n"></span></h2>
+      <button @click="n++">n++</button>
+
+      <input type="text" v-fbind:value="n" />
+    </div>
+    <script type="text/javascript">
+      Vue.config.productionTip = false;
+      Vue.directive('big-number',function(elm, binding) {
+            if (binding.modifiers.sum) {
+              elm.innerText = binding.value + parseInt(binding.arg);
+              return;
+            }
+            elm.innerText = binding.value * parseInt(binding.arg);
+          })
+      new Vue({
+        el: "#root",
+        data: {
+          n: 1,
+        },
+        directives: {
+          // 'big-number'(elm, binding) {
+          //   console.log(binding);
+          //   if (binding.modifiers.sum) {
+          //     elm.innerText = binding.value + parseInt(binding.arg);
+          //     return;
+          //   }
+          //   elm.innerText = binding.value * parseInt(binding.arg);
+          // },
+          'big'(elm, binding) {
+            if (binding.modifiers.sum) {
+              elm.innerText = binding.value + parseInt(binding.arg);
+              return;
+            }
+            elm.innerText = binding.value * parseInt(binding.arg);
+          },
+          fbind: {
+            bind(elm, binding) {
+              elm.value = binding.value;
+            },
+            inserted(elm, binding) {
+              elm.focus();
+            },
+            update(elm, binding) {
+              elm.value = binding.value;
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

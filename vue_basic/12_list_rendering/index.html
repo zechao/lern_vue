@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get start with Vue.js</title>
+    <script src='/js/vue.js'></script>
+    <style>
+        .background {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <button @click="show=!show">Click</button>
+        <div v-show="show">
+            <ul>
+                <li v-for="p in persons" :key="p.id">id: {{p.id}} code: {{p.code}}</li>
+            </ul>
+            <h2>Car info</h2>
+            <ul>
+                <li v-for="(value,key) in car" :key="key">
+                    {{key}}:{{value}}
+                </li>
+            </ul>
+            <ul>
+                <li v-for="(value,key) in 'str'" :key="key">
+                    {{key}}:{{value}}
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: "#root",
+            data: {
+                name: 'Zechao',
+                show: true,
+                persons: [{
+                        id: 01,
+                        code: "A"
+                    },
+                    {
+                        id: 02,
+                        code: "b"
+                    },
+                    {
+                        id: 03,
+                        code: "c"
+                    },
+                ],
+                car: {
+                    name: "Audi A8",
+                    price: "700K",
+                    color: "black"
+                },
+                str:"hello"
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

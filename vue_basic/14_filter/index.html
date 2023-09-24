@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get start with Vue.js</title>
+    <script src='/js/vue.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <h2>显示格式化后的时间:{{fmtTime}}</h2>
+
+        <h2>显示格式化后的时间 Using filter:{{time|timeFormater}}</h2>
+        
+        <h2>显示格式化后的时间 Date Using filter:{{time|timeFormater('YYYY-MM-DD')}}</h2>
+        <h2>显示格式化后的时间 slice filter:{{time|timeFormater('YYYY-MM-DD')|slice}}</h2>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+        Vue.filter("slice",function(a){
+            return a.slice(0,4)
+        })
+        new Vue({
+            el: '#root',
+            time: {
+                date: new Date().getTime()
+            },
+            computed: {
+                fmtTime() {
+                    return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            },
+            filters: {
+                timeFormater(t, format='YYYY-MM-DD HH:mm:ss') {
+                    return dayjs(t).format(format)
+                }
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

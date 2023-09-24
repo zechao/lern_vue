@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get start with Vue.js</title>
+    <script src='/js/vue.js'></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <label for="ln">姓</label>
+        <input type="text" value="JIN" id="ln" v-model="ln"><br>
+        <label for="fn">名</label>
+        <input type="text" value="Zechao" id="fn" v-model="fn"><br>
+        full name: <span>{{fullName}}</span>
+    </div>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: "#root",
+            data: {
+                fn: 'Zechao',
+                ln: 'JIN',
+            },
+            watch:{
+                fn:{
+                    immediate:true,
+                    handler(){
+                        this.fn = this.fn.toUpperCase()
+                    }
+                }
+            },
+            computed: {
+                fullName() {
+                    return `${this.ln.toUpperCase()}-${this.fn.toUpperCase()}`
+                }
+            },
+            NavigationPreloadManager
+        })
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get start with Vue.js</title>
+    <script src='/js/vue.js'></script>
+<style>
+    .background{
+        background-color: red;
+    }
+</style>
+</head>
+
+<body>
+    <div id="root" >
+        <label for="ln" >姓</label>
+        <input type="text" value="jin" id="ln" v-model="ln"><br>
+        <label for="fn" :class="nameclass">名 </label>
+        <input type="text" value="zechao" id="fn" v-model="fn" :style="{fontSize:'40px'}"><br>
+        full name: <span>{{fullName}}</span>
+    </div>
+    <script type="text/javascript">
+
+        const vm = new Vue({
+            el: "#root",
+            data: {
+                fn: 'Zechao',
+                ln: 'JIN',
+                nameclass:"background"
+            },
+            watch:{
+                fn(){
+                    this.fn = this.fn.toUpperCase()             
+                }
+            },
+            computed: {
+                fullName() {
+                    return `${this.ln.toUpperCase()}-${this.fn.toUpperCase()}`
+                }
+            },
+        })
+    </script>
+
+
+</body>
+
+</html>

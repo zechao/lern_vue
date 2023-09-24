@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get start with Vue.js</title>
+    <script src='/js/vue.js'></script>
+
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+    <script type="text/javascript">
+        let person = {
+            name: 'zechao',
+            sex: "H",
+            age: 30,
+        }
+
+        Object.defineProperty(person, 'age', {
+            //value: 19,
+            //enumerable: true, //iterable property, default false
+            //writable: true, // default false
+            //configurable: true, //can be delete default false
+            get: function () {
+                return "121"
+            }
+        })
+        console.log(person)
+    </script>
+
+
+</body>
+
+</html>

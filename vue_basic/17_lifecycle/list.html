@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get start with Vue.js</title>
+    <script src="/js/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  </head>
+
+  <body>
+    <div id="root">
+      <h2 :style="{opacity}">Hello world</h2>
+      <button @click="stopChange">Click to stop</button>
+      <button @click="opacity=1">Set opacity to 1</button>
+    </div>
+    <script type="text/javascript">
+      Vue.config.productionTip = false;
+
+      new Vue({
+        el: "#root",
+        data: {
+          opacity: 1,
+        },
+        mounted() {
+          this.timer = setInterval(() => {
+            this.opacity -= 0.01;
+            if (this.opacity <= 0) {
+              this.opacity = 1;
+            }
+          }, 20);
+        },
+        methods: {
+          stopChange(){
+            this.$destroy()
+          }
+        },
+        beforeCreate() {
+          console.log("beforeCreated");
+        },
+        created() {
+          console.log("created");
+        },
+        beforeMount() {
+          console.log("beforeMount");
+        },
+        beforeUpdate() {
+          console.log("before update");
+        },
+        updated() {
+          console.log("updated");
+        },
+        beforeDestroy() {
+          clearInterval(this.timer);
+        },
+      });
+    </script>
+  </body>
+</html>
