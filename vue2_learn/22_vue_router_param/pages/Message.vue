@@ -3,14 +3,19 @@
 		<ul>
 			<li v-for="m in messageList" :key="m.id">
 				<!-- <router-link
-					v-bind:to="`/home/message/detail?id=${m.id}&title=${m.title}`"
+					:to="{
+						path: `/home/message/detail/${m.id}/${m.title}`,
+					}"
 					>{{ m.title }}</router-link
 				> -->
-
 				<router-link
-					v-bind:to="{
-						path: '/home/message/detail',
-						query: { ...m },
+					:to="{
+						name: 'detail',
+						params: {
+							id: m.id,
+							message: m.title,
+							test: true,
+						},
 					}"
 					>{{ m.title }}</router-link
 				>

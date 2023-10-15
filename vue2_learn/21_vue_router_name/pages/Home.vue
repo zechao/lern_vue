@@ -7,7 +7,7 @@
 					<router-link
 						class="list-group-item"
 						active-class="active"
-						to="/home/news"
+						:to="{name:'news'}"
 						>News</router-link
 					>
 				</li>
@@ -15,7 +15,7 @@
 					<router-link
 						class="list-group-item"
 						active-class="active"
-						to="/home/message"
+						:to="{name:'message'}"
 						>Message</router-link
 					>
 				</li>
