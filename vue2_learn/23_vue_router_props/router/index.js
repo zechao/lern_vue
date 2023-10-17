@@ -31,6 +31,21 @@ export default new VueRouter({
                             name: "detail",
                             path: "detail/:id/:message",
                             component: Detail,
+                            // static value for router component
+                            // props: {
+                            //     a: 1,
+                            //     b: "hello",
+                            // },
+
+                            // params are sent as propos to the router component
+                            // props:true
+
+                            props($router) {
+                                return {
+                                    id: $router.params.id,
+                                    message: $router.params.message,
+                                };
+                            },
                         },
                     ],
                 },

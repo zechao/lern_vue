@@ -1,13 +1,14 @@
 <template>
 	<ul>
-		<li>Message id:{{$route.params.id}}</li>
-		<li>Message title:{{$route.params.message}}</li>
+		<li>Message id:{{id}}</li>
+		<li>Message title:{{message}}</li>
 	</ul>
 </template>
 
 <script>
 export default {
 	name: "About",
+	props:['id','message'],
 	mounted(){
 		console.log(this.$route)
 	}
